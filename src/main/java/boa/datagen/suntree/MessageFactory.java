@@ -23,8 +23,8 @@ import boa.util.annotations.Singleton;
 import com.google.protobuf.Message;
 
 /**
- * This is an abstract class extended by all concrete message factory types (e.g. {@link ASTRootFactory} and
- * {@link ExpressionFactory}).
+ * This is an abstract class extended by all concrete message factory types (e.g. {@link
+ * ASTRootFactory} and {@link ExpressionFactory}).
  *
  * TODO: Describe the expected design pattern.
  *

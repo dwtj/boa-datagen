@@ -22,9 +22,10 @@ import boa.util.annotations.NoStaticMutableState;
 import com.sun.source.tree.*;
 
 /**
- * A class implementing {@link TreeVisitor} which throws a {@link TreeVisitorException} whenever any of its visit
- * methods are called. This is meant to be sub-classed by tree visitors which are only designed to implement some
- * subset of the interface, and (for safety) want all calls to non-overridden visit methods to be reported loudly.
+ * A class implementing {@link TreeVisitor} which throws a {@link TreeVisitorException} whenever any
+ * of its visit methods are called. This is meant to be sub-classed by tree visitors which are only
+ * designed to implement some subset of the interface, and (for safety) want all calls to non-
+ * overridden visit methods to be reported loudly.
  *
  * @author dwtj
  */

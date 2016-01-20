@@ -52,7 +52,8 @@ public class FromResourcesTest {
     public void itFailsWithoutResource() {
         try {
             runProc("NonExistentResource.java");
-            throw new RuntimeException("Expected that an error would be thrown when looking up the resource.");
+            String errMsg = "Expected that an error would be thrown when looking up the resource.";
+            throw new RuntimeException(errMsg);
         } catch (IllegalArgumentException ex) {
             // It failed, as expected.
         }
@@ -89,8 +90,8 @@ public class FromResourcesTest {
         assertEquals(1, proc.getASTRoots().size());
     }
 
-    private static Iterable<? extends JavaFileObject> lookupJavaTestSrcResources(String... testSrcFile) {
-        List<JavaFileObject> files = new ArrayList<JavaFileObject>();
+    private static Iterable<JavaFileObject> lookupJavaTestSrcResources(String... testSrcFile) {
+        List<JavaFileObject> files = new ArrayList<>();
         for (String resource : testSrcFile) {
             files.add(forResource(JAVA_TEST_SRC_RESOURCE_PREFIX + resource));
         }

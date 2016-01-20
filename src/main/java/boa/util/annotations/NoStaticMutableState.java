@@ -23,8 +23,8 @@ import java.lang.annotation.Inherited;
 import java.lang.annotation.Target;
 
 /**
- * An annotation to indicate that the annotated class has no static mutable state (i.e. any {@code static} fields
- * are not mutable).
+ * An annotation to indicate that the annotated class has no static mutable state (i.e. any {@code
+ * static} fields are not mutable).
  *
  * @author dwtj
  */

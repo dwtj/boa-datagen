@@ -18,9 +18,9 @@
 package boa.util.annotations;
 
 /**
- * Annotation to tell a testing {@link javax.annotation.processing.Processor annotation processor} where processing
- * should begin. This can help with testing, especially since an annotation of some kind is needed to trigger an
- * annotation processor.
+ * Annotation to tell a testing {@link javax.annotation.processing.Processor annotation processor}
+ * where processing should begin. This can help with testing, especially since an annotation of some
+ * kind is needed to trigger an annotation processor.
  *
  * @author dwtj
  */

@@ -21,6 +21,8 @@ import boa.types.Ast.ASTRoot;
 import boa.types.Ast.ASTRoot.Builder;
 import com.sun.source.tree.*;
 
+import javax.naming.OperationNotSupportedException;
+
 /**
  * Makes and populates an {@link ASTRoot.Builder} from a given {@link CompilationUnitTree}.
  *
@@ -55,7 +57,10 @@ public class ASTRootFactory extends MessageFactory<Builder> {
 
     @Override
     public Void visitImport(ImportTree tree, Builder builder) {
-        // TODO: tree.isStatic()
+        if (tree.isStatic()) {
+            // TODO: tree.isStatic()
+            throw new UnsupportedOperationException("Cannot yet support static imports.");
+        }
         builder.addImports(qualifiedIdentifierTerminal(tree.getQualifiedIdentifier()));
         return null;
     }
@@ -63,8 +68,9 @@ public class ASTRootFactory extends MessageFactory<Builder> {
     public static String qualifiedIdentifierTerminal(Tree tree) {
         switch (tree.getKind()) {
         case MEMBER_SELECT:
-            // For some reason, this seems to be the kind used to represent the imports. I think that the idea comes
-            // from the fact that every valid import has to have at least one `.` in the name.
+            // For some reason, this seems to be the kind used to represent the imports. I think
+            // that the idea comes from the fact that every valid import has to have at least one
+            // `.` in the name.
             return tree.toString();
         default:
             throw new RuntimeException("Unreachable code.");

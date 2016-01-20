@@ -76,8 +76,9 @@ public class NamespaceFactory extends MessageFactory<Builder> {
     }
 
     protected String packageNameTerminal(ExpressionTree packageName) {
-        // When classes are in the default package, their package name is represented as null in the part of the JCTree
-        // implementation which we are calling on. We, however, represent the default package with the empty string.
+        // When classes are in the default package, their package name is represented as null in the
+        // part of the JCTree implementation which we are calling on. We, however, represent the
+        // default package with the empty string.
         return (packageName == null) ? "" : packageName.toString();
     }
 }

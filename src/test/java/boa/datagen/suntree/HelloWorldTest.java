@@ -67,12 +67,12 @@ public class HelloWorldTest {
 
     private final static ASTRoot FROM_BUILDER = ASTRoot.newBuilder()
             .addImports("boa.util.annotations.TestInput")
-            .addNamespaces(Namespace.newBuilder()                      // Add a nested `HelloWorld` namespace.
+            .addNamespaces(Namespace.newBuilder()                      // Add nested namespace
                     .setName("boa.datagen.suntree.test")
-                    .addDeclarations(Declaration.newBuilder()          // Add a nested `HelloWorld` class declaration.
+                    .addDeclarations(Declaration.newBuilder()          // Add nested class decl
                             .setName("HelloWorld")
                             .setKind(TypeKind.CLASS)
-                            .addModifiers(Modifier.newBuilder()        // Add the class's annotation modifier.
+                            .addModifiers(Modifier.newBuilder()        // Add annotation as modifier
                                     .setKind(ModifierKind.ANNOTATION)
                                     .setAnnotationName("TestInput"))
                     )

@@ -23,7 +23,8 @@ import java.lang.annotation.Inherited;
 import java.lang.annotation.Target;
 
 /**
- * An annotation to indicate that the annotated class is expected to follow the singleton design pattern.
+ * An annotation to indicate that the annotated class is expected to follow the singleton design
+ * pattern.
  *
  * @author dwtj
  */

@@ -18,6 +18,7 @@
 package boa.datagen.suntree;
 
 import boa.types.Ast.Modifier;
+import boa.types.Ast.Modifier.Visibility;
 import boa.types.Ast.Modifier.Builder;
 import boa.types.Ast.Modifier.ModifierKind;
 import com.sun.source.tree.AnnotationTree;
@@ -67,13 +68,13 @@ public class ModifierFactory extends MessageFactory<Builder> {
         switch (modifier) {
 
             case PUBLIC:
-                builder.setKind(ModifierKind.VISIBILITY).setVisibility(Modifier.Visibility.PUBLIC);
+                builder.setKind(ModifierKind.VISIBILITY).setVisibility(Visibility.PUBLIC);
                 break;
             case PROTECTED:
-                builder.setKind(ModifierKind.VISIBILITY).setVisibility(Modifier.Visibility.PROTECTED);
+                builder.setKind(ModifierKind.VISIBILITY).setVisibility(Visibility.PROTECTED);
                 break;
             case PRIVATE:
-                builder.setKind(ModifierKind.VISIBILITY).setVisibility(Modifier.Visibility.PRIVATE);
+                builder.setKind(ModifierKind.VISIBILITY).setVisibility(Visibility.PRIVATE);
                 break;
 
             case ABSTRACT:
@@ -117,7 +118,8 @@ public class ModifierFactory extends MessageFactory<Builder> {
     }
 
     public Void visitExpression(ExpressionTree tree, Builder builder) {
-        // TODO: Delegate to an `ExpressionFactory`? Maybe not: we might first need custom behavior to get member names.
+        // TODO: Delegate to an `ExpressionFactory`?
+        // Maybe not: we might first need custom behavior to get member names.
         throw new UnsupportedOperationException("TODO");
     }
 

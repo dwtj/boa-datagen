@@ -21,9 +21,9 @@ import boa.types.Ast;
 import com.sun.source.tree.*;
 
 /**
- * A data adapter which converts from a {@link com.sun.source.tree Sun AST} to a similar tree represented by the types
- * in {@link boa.types.Ast}. This is the expected entry-point in the transformation of Sun Trees into
- * {@code boa.types.Ast}.
+ * A data adapter which converts from a {@link com.sun.source.tree Sun AST} to a similar tree
+ * represented by the types in {@link boa.types.Ast}. This is the expected entry-point in the
+ * transformation of Sun Trees into {@code boa.types.Ast}.
  *
  * @see boa.datagen.suntree For information about the implementation's design.
  * @author dwtj
