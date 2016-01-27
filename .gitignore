@@ -4,5 +4,6 @@ target
 # IDE Files
 .project
 .classpath
-.idea
+.settings/
+.idea/
 *.iml
