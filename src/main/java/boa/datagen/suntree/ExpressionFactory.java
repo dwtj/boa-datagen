@@ -440,8 +440,7 @@ public class ExpressionFactory extends ExceptingTreeVisitor<Void, Builder> imple
             throw new UnsupportedOperationException("TODO: NewClassTree.getEnclosingExpression()");
         }
         if (tree.getClassBody() != null) {
-            // TODO: Anonymous class instantiation.
-            throw new UnsupportedOperationException("TODO: NewClassTree.getClassBody()");
+            builder.setAnonDeclaration(DeclarationFactory.make(tree.getClassBody()));
         }
         for (Tree typeArg : tree.getTypeArguments()) {
             // TODO: Type arguments to constructor.
