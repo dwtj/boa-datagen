@@ -58,10 +58,8 @@ public class ASTRootFactory extends ExceptingTreeVisitor<Void, Builder>
 
     @Override
     public Void visitImport(ImportTree tree, Builder builder) {
-        if (tree.isStatic()) {
-            // TODO: tree.isStatic()
-            throw new UnsupportedOperationException("Cannot yet support static imports.");
-        }
+        // TODO: Revise how info about static is stored.
+        builder.addImportIsStatic(tree.isStatic());
         builder.addImports(qualifiedIdentifierTerminal(tree.getQualifiedIdentifier()));
         return null;
     }

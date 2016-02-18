@@ -101,6 +101,7 @@ public class JlsSrcTest {
             "interfaces/SimpleInterface.java",
             "packages/ClassInDefaultPackage.java",
             "packages/TwoDeclarationsInCompilationUnit.java",
+            "packages/StaticImports.java",
             "packages/WildcardImports.java",
             "statements/Blocks.java",
             "statements/LocalClassDeclarations.java",

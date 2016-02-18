@@ -27,6 +27,7 @@ message ASTRoot {
 	repeated Namespace namespaces = 1;
 	repeated string imports = 2;
 	repeated string names = 3;
+	repeated bool import_is_static = 4;
 }
 
 message Namespace {
