@@ -150,8 +150,7 @@ public class MethodFactory implements MessageFactory<Builder> {
     private void addAnyThrows(MethodTree method, Builder builder) {
         assert method.getThrows() != null: "`MethodTree.getThrows()` shouldn't return null.";
         for (ExpressionTree throwExpr : method.getThrows()) {
-            // TODO: Everything!
-            throw new UnsupportedOperationException("TODO: MethodFactory: methodTree.getThrows()");
+            builder.addExceptionTypes(TypeFactory.make(throwExpr));
         }
     }
 
