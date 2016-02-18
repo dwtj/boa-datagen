@@ -458,9 +458,11 @@ public class ExpressionFactory extends ExceptingTreeVisitor<Void, Builder> imple
     }
 
     @Override
-    public Void visitTypeCast(TypeCastTree tree, Builder builder) {
-        // TODO: Everything!
-        throw new UnsupportedOperationException("TODO");
+    public Void visitTypeCast(TypeCastTree typeCast, Builder builder) {
+        builder.setKind(ExpressionKind.CAST);
+        builder.setType(TypeFactory.make(typeCast.getType()));
+        builder.addExpressions(ExpressionFactory.make(typeCast.getExpression()));
+        return null;
     }
 
     @Override

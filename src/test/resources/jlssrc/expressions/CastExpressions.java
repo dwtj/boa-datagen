@@ -6,5 +6,10 @@ package jlssrc.expressions;
  *      </a>
  */
 class CastExpressions {
-    // TODO: Everything!
+    void expressions() {
+        String empty = "";
+        Object obj = (String) empty;
+        String str = ((Object) empty).toString();
+        empty = (String) obj;
+    }
 }
