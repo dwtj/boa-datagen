@@ -60,6 +60,8 @@ message Declaration {
 	repeated Variable fields = 7;
 	repeated Declaration nested_declarations = 8;
 	repeated Comment comments = 9;
+	repeated Statement init_blocks = 10;
+	repeated Statement static_init_blocks = 11;
 //	required PositionInfo position = 10;
 }
 
@@ -132,6 +134,7 @@ message Statement {
 		VARDECL = 20;
 		FINALLY = 21;
 		ENHANCEDFOR = 22;
+		STATICBLOCK = 23;
 	}
 	required StatementKind kind = 1;
 	repeated Comment comments = 2;
