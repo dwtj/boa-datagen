@@ -92,7 +92,7 @@
         <dependency>
             <groupId>me.dwtj</groupId>
             <artifactId>dacapo-9.12-bms-sources</artifactId>
-            <version>0.1.0</version>
+            <version>0.1.1</version>
             <scope>test</scope>
         </dependency>
     </dependencies>
