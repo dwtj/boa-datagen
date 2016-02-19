@@ -504,6 +504,21 @@ public class ExpressionFactory extends ExceptingTreeVisitor<Void, Builder> imple
         return null;
     }
 
+    /**
+     * This is visited as part of a class literal expression when the left-hand-side of the dot
+     * is a primitive type (e.g. `int` and `void`).
+     *
+     * @see <a href="https://docs.oracle.com/javase/specs/jls/se8/html/jls-15.html#jls-15.8.2">
+     *        15.8.2. Class Literals
+     *      </a>
+     */
+    @Override
+    public Void visitPrimitiveType(PrimitiveTypeTree tree, Builder builder) {
+        builder.setKind(ExpressionKind.LITERAL);
+        builder.setType(TypeFactory.make(tree));
+        return null;
+    }
+
     private static String methodSelectExpressionTerminal(ExpressionTree tree) {
         Tree.Kind kind = tree.getKind();
         if (kind == Tree.Kind.IDENTIFIER) {
