@@ -9,8 +9,10 @@ class ClassLiteralExpression {
     void expressions() {
         Class<?> cls = null;
         cls = Object.class;
+        cls = Object[].class;
         cls = int.class;
         cls = boolean.class;
+        cls = boolean[].class;
         cls = void.class;
     }
 }
