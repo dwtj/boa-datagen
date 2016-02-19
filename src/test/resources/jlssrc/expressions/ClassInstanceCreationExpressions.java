@@ -20,6 +20,8 @@ class ClassInstanceCreationExpressions {
 
     private @interface Anno { }
 
+    class Inner {}
+
     void expressions() {
 
         // Class instance creation:
@@ -42,10 +44,13 @@ class ClassInstanceCreationExpressions {
             }
         };
 
-        // Annotated fully qualified type identifier.
-        //List<String> list4 = new @Anno java . @Anno util . @Anno ArrayList<>();  // TODO!
+        // TODO: Add more examples with explicit enclosing instance. (See Sections 15.9 and 15.9.2)
+        this.new Inner();
 
-        // TODO: Add examples with explicit enclosing instance. See Section 15.9.2.
+        // Annotated fully qualified type identifier.
+
+        // TODO: What's wrong with this? Where can the annotations go?
+        //List<String> list4 = new @Anno java . @Anno util . @Anno ArrayList<>();
 
         // TODO: Add example where identifier is qualified.
 

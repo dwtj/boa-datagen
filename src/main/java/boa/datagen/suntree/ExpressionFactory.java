@@ -436,8 +436,7 @@ public class ExpressionFactory extends ExceptingTreeVisitor<Void, Builder> imple
             builder.addExpressions(ExpressionFactory.make(arg));
         }
         if (tree.getEnclosingExpression() != null) {
-            // TODO: Explicit enclosing instance.
-            throw new UnsupportedOperationException("TODO: NewClassTree.getEnclosingExpression()");
+            builder.setEnclosingExpression(ExpressionFactory.make(tree.getEnclosingExpression()));
         }
         if (tree.getClassBody() != null) {
             builder.setAnonDeclaration(DeclarationFactory.make(tree.getClassBody()));

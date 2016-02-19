@@ -218,6 +218,7 @@ message Expression {
 	optional Declaration anon_declaration = 11;
 	repeated Modifier annotation = 12;
 	repeated Expression initializers = 13;
+	optional Expression enclosing_expression = 14;
 //	required PositionInfo position = 13;
 }
 
