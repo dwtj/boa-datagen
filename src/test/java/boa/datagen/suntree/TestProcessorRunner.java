@@ -17,29 +17,29 @@
 
 package boa.datagen.suntree;
 
-import boa.types.Ast;
+import boa.types.Ast.ASTRoot;
+import boa.util.CompilationUnitsProcessor;
+import com.sun.source.tree.CompilationUnitTree;
 
 import javax.tools.JavaFileObject;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Collection;
 import java.util.List;
+import java.util.function.Consumer;
 
-import static com.google.common.truth.Truth.assert_;
 import static com.google.testing.compile.JavaFileObjects.forResource;
-import static com.google.testing.compile.JavaSourcesSubjectFactory.javaSources;
 import static org.junit.Assert.assertTrue;
 
 public class TestProcessorRunner {
 
-    public static void processJavaSourceResourceFiles(Iterable<String> testSrcFiles) {
-        TestProcessor proc = new TestProcessor();
-        assert_().about(javaSources())
-                .that(lookupJavaSourceResources(testSrcFiles))
-                .processedWith(proc)
-                .compilesWithoutError();
-        assertTrue(proc.getASTRoots().size() >= 1);
+    public static void processJavaSourceResourceFiles(Collection<String> testSrcFiles) {
+        List<ASTRoot> roots = new ArrayList<>();
+        SunTreeAdapter adapter = new SunTreeAdapter();
+        Consumer<CompilationUnitTree> fn = (cu -> roots.add(adapter.adapt(cu)));
+        CompilationUnitsProcessor.fromResourceNames(fn, testSrcFiles);
 
-        for (Ast.ASTRoot root : proc.getASTRoots()) {
+        for (ASTRoot root : roots) {
             System.out.println(root.toString());
         }
     }

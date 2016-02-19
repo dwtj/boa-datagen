@@ -17,12 +17,10 @@
 
 package boa.datagen.suntree;
 
-import org.junit.Before;
+import boa.util.CompilationUnitsProcessor;
 import org.junit.Test;
 
-import static com.google.common.truth.Truth.assert_;
 import static com.google.testing.compile.JavaFileObjects.forSourceString;
-import static com.google.testing.compile.JavaSourceSubjectFactory.javaSource;
 import static org.junit.Assert.assertEquals;
 
 /**
@@ -30,28 +28,8 @@ import static org.junit.Assert.assertEquals;
  */
 public class SourceStringTest {
 
-    TestProcessor proc;
-
-    @Before
-    public void setUp() {
-        proc = new TestProcessor();
-    }
-
-    @Test
-    public void sourceStringFailsBecauseOfBadJava() {
-        assert_().about(javaSource())
-                .that(forSourceString("HelloWorld", "@NonExistentType class HelloWorld {}"))
-                .processedWith(proc)
-                .failsToCompile();   // Because `@NonExistentType` couldn't be found.
-    }
-
     @Test
     public void sourceStringOk() {
-        assert_().about(javaSource())
-                .that(forSourceString("Ok", "class Ok {}"))
-                .processedWith(proc)
-                .compilesWithoutError();
-
-        assertEquals(1, proc.getASTRoots().size());
+        CompilationUnitsProcessor.fromJavaFileObjects(cu->{}, forSourceString("Ok", "class Ok {}"));
     }
 }

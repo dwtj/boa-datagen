@@ -19,19 +19,19 @@ package boa.datagen.suntree;
 
 import boa.types.Ast.ASTRoot;
 import boa.types.Ast.Declaration;
-import boa.types.Ast.Modifier;
-import boa.types.Ast.Modifier.ModifierKind;
 import boa.types.Ast.Namespace;
 import boa.types.Ast.Declaration.DeclarationKind;
 
+import boa.util.CompilationUnitsProcessor;
 import com.google.protobuf.TextFormat;
 import org.junit.Test;
 
 import javax.tools.JavaFileObject;
 
-import static com.google.common.truth.Truth.assert_;
+import java.util.ArrayList;
+import java.util.List;
+
 import static com.google.testing.compile.JavaFileObjects.forSourceLines;
-import static com.google.testing.compile.JavaSourceSubjectFactory.javaSource;
 import static org.junit.Assert.assertEquals;
 
 /**
@@ -108,13 +108,10 @@ public class HelloWorldTest {
     }
 
     public static ASTRoot getRootASTAdaptedWithinProcessor(JavaFileObject source) {
-        TestProcessor proc = new TestProcessor();
-        assert_().about(javaSource())
-                .that(source)
-                .processedWith(proc)
-                .compilesWithoutError();
-
-        assertEquals(1, proc.getASTRoots().size());
-        return proc.getASTRoot(0);
+        List<ASTRoot> roots = new ArrayList<>(1);
+        SunTreeAdapter adapter = new SunTreeAdapter();
+        CompilationUnitsProcessor.fromJavaFileObjects(cu -> roots.add(adapter.adapt(cu)), source);
+        assertEquals(roots.size(), 1);
+        return roots.get(0);
     }
 }
