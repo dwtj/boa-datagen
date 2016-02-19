@@ -66,6 +66,8 @@ public class TypeFactory implements MessageFactory<Builder> {
                 return make((AnnotatedTypeTree) tree);
             case MEMBER_SELECT:
                 return make((MemberSelectTree) tree);
+            case UNBOUNDED_WILDCARD:
+                return make((WildcardTree) tree);
             default:
                 String errMsg = "Tried to make a type from an unexpected kind of tree: " + kind;
                 throw new IllegalArgumentException(errMsg);
@@ -137,6 +139,16 @@ public class TypeFactory implements MessageFactory<Builder> {
         Builder builder = Type.newBuilder();
         builder.setKind(TypeKind.REFERENCE);
         builder.setName(nameOf(memberSelect));
+        return builder;
+    }
+
+    public static Builder make(WildcardTree wildcard) {
+        Builder builder = Type.newBuilder().setKind(TypeKind.WILDCARD);
+        if (wildcard.getBound() == null) {
+            builder.setName("?");
+        } else {
+            throw new UnsupportedOperationException("TODO: Wildcard bounds");
+        }
         return builder;
     }
 
