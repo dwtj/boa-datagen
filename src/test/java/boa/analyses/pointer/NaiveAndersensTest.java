@@ -18,11 +18,8 @@
 package boa.analyses.pointer;
 
 import boa.datagen.suntree.SunTreeAdapter;
-import boa.util.CompilationUnitsProcessor;
-import me.dwtj.dacapo.Benchmarks;
 import org.junit.Test;
 
-import static me.dwtj.dacapo.BenchmarkSources.getResourceNames;
 
 /**
  * Used to drive {@link NaiveAndersens}, a simple Andersen's style points-to analysis. It is both
@@ -35,7 +32,5 @@ public class NaiveAndersensTest {
     @Test
     public void naiveAndersensTest() {
         SunTreeAdapter adapter = new SunTreeAdapter();
-        CompilationUnitsProcessor.fromResourceNames(cu -> NaiveAndersens.analyze(adapter.adapt(cu)),
-                                                    getResourceNames(Benchmarks.SUNFLOW));
     }
 }
