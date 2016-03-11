@@ -150,8 +150,13 @@ public class DeclarationFactory extends ExceptingTreeVisitor<Void, Builder> impl
      * Visit a declaration's instance initialization block or static initialization block.
      */
     @Override
-    public Void visitBlock(BlockTree tree, Builder builder) {
-        throw new UnsupportedOperationException("TODO: MethodFactory.visitBlock()");
+    public Void visitBlock(BlockTree block, Builder builder) {
+        if (block.isStatic()) {
+            builder.addStaticInitBlocks(StatementFactory.make(block));
+        } else {
+            builder.addInitBlocks(StatementFactory.make(block));
+        }
+        return null;
     }
 
     private static String classSimpleNameTerminal(Name name) {
